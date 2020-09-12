@@ -1,7 +1,13 @@
 import './styles.css';
 import './java-script/switch.js'
-// const greeter = require('./java-script/switch.js');
-// console.log(greeter)
+import objectData from './menu.json'
+import menuTemplate from './templates/galery.hbs';
+const markup = menuTemplate(objectData);
+const redyRenderingUl = document.querySelector('.js-menu');
+redyRenderingUl.insertAdjacentHTML('afterbegin', markup);
+
+
+
 
 
 
