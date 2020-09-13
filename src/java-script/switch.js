@@ -6,14 +6,6 @@ const Theme = {
     const switchThem = document.querySelector('.switch');
     const changeHueForBody = document.querySelector('body');
     const changeValueForInput = document.querySelector('.js-switch-input');
-    // if(changeValueForInput.checked === false){
-    //     console.log(changeValueForInput.checked)
-    //     changeHueForBody.classList.add(Theme.LIGHT);
-    // }
-    // if(changeValueForInput.checked === true){
-    //     console.log(changeValueForInput.checked)
-    //     changeHueForBody.classList.add(Theme.DARK); 
-    // }
     window.addEventListener('DOMContentLoaded',ev => {
         const savedSettings = localStorage.getItem('them');
         const parsedSettings = JSON.parse(savedSettings); 
@@ -31,7 +23,7 @@ const Theme = {
             changeValueForInput.checked = false;
         }
     });
-    
+
     switchThem.addEventListener('change',switchThemEvent);
     function switchThemEvent(){
         if(changeHueForBody.classList.contains(Theme.LIGHT) ){
