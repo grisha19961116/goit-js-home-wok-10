@@ -6,21 +6,32 @@ const Theme = {
     const switchThem = document.querySelector('.switch');
     const changeHueForBody = document.querySelector('body');
     const changeValueForInput = document.querySelector('.js-switch-input');
-    changeValueForInput.checked = false;
-    changeHueForBody.classList.add(Theme.LIGHT);
-    window.addEventListener('load',ev => {
+    // if(changeValueForInput.checked === false){
+    //     console.log(changeValueForInput.checked)
+    //     changeHueForBody.classList.add(Theme.LIGHT);
+    // }
+    // if(changeValueForInput.checked === true){
+    //     console.log(changeValueForInput.checked)
+    //     changeHueForBody.classList.add(Theme.DARK); 
+    // }
+    window.addEventListener('DOMContentLoaded',ev => {
         const savedSettings = localStorage.getItem('them');
         const parsedSettings = JSON.parse(savedSettings); 
-        if(localStorage !== null){
             if(parsedSettings === Theme.LIGHT){
-                return;
-            }
-            if(parsedSettings === Theme.DARK){
-            changeHueForBody.classList.replace(Theme.LIGHT,Theme.DARK);
+                changeHueForBody.classList.add(Theme.LIGHT);
+                changeValueForInput.checked = false;
+                console.log(`change them on LIGHT from local storage`);
+            } else if(parsedSettings === Theme.DARK){
+            changeHueForBody.classList.add(Theme.DARK);
             changeValueForInput.checked = true;
-            }
+            console.log(`change them on DARK from local storage`);
+            } else {
+            console.log(`base sethings for Page when you are visit in the first is THEM LIGHT when we are opening in the first`)
+            changeHueForBody.classList.add(Theme.LIGHT);
+            changeValueForInput.checked = false;
         }
     });
+    
     switchThem.addEventListener('change',switchThemEvent);
     function switchThemEvent(){
         if(changeHueForBody.classList.contains(Theme.LIGHT) ){
